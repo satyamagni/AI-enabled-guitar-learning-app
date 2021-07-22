@@ -1,6 +1,10 @@
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { RadioButton, TextInput } from 'react-native-paper';
+import { Camera } from 'expo-camera';
+import * as ImagePicker from 'expo-image-picker';
+import camera from "./camera.js"
+
 
 import {
   SafeAreaView,
@@ -12,6 +16,7 @@ import {
   View,
   Image,ImageBackground,
   Button,
+  TouchableOpacity
 } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -120,22 +125,98 @@ const HomeScreen = ({navigation}) => {
                     <Text>Sight Reading Battle</Text>
                 </View>
                 <View style={{width:'50%',height: 250, backgroundColor:'yellow', justifyContent:'center', alignItems:'center'}}>
-                <Text>Ear Training Battle</Text>
-
+                    <Text>Ear Training Battle</Text>
                 </View>
             </View>
             <View style={{flexDirection:'row'}}>
                 <View style={{width:'50%',height: 250, backgroundColor:'green', justifyContent:'center', alignItems:'center'}}>
-                <Text>Practice music scores</Text>
-
+                    <Text>Practice music scores</Text>
                 </View>
                 <View style={{width:'50%',height: 250, backgroundColor:'dodgerblue', justifyContent:'center', alignItems:'center'}}>
-                <Text>Upload pdf scores</Text>
+                    <Button title='Upload image score' onPress={()=> camera()}/>
                 </View>
             </View>
         </SafeAreaView>
     );
 };
+
+/*
+const function UploadImage() {
+    const [image, setImage] = useState(null);
+  
+    useEffect(() => {
+      (async () => {
+        if (Platform.OS !== 'web') {
+          const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+          if (status !== 'granted') {
+            alert('Sorry, we need camera roll permissions to make this work!');
+          }
+        }
+      })();
+    }, []);
+  
+    const pickImage = async () => {
+      let result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.All,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
+      });
+  
+      console.log(result);
+  
+      if (!result.cancelled) {
+        setImage(result.uri);
+      }
+    };
+  
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Button title="Pick an image from camera roll" onPress={pickImage} />
+        {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+      </View>
+    );
+  }
+*/
+
+/*
+function OpenCamera () {
+    const [hasPermission, setHasPermission] = useState(null);
+    const [type, setType] = useState(Camera.Constants.Type.back);
+    useEffect(() => {
+        (async () => {
+          const { status } = await Camera.requestPermissionsAsync();
+          setHasPermission(status === 'granted');
+        })();
+      }, []);
+      if (hasPermission === null) {
+        return <View />;
+      }
+      if (hasPermission === false) {
+        return <Text>No access to camera</Text>;
+      }
+      return (
+        <View style={styles.container}>
+          <Camera style={styles.camera} type={type}>
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={() => {
+                  setType(
+                    type === Camera.Constants.Type.back
+                      ? Camera.Constants.Type.front
+                      : Camera.Constants.Type.back
+                  );
+                }}>
+                <Text style={styles.text}> Flip </Text>
+              </TouchableOpacity>
+            </View>
+          </Camera>
+        </View>
+      );   
+
+}
+*/
 
 const styles = StyleSheet.create(
     {
@@ -144,7 +225,9 @@ const styles = StyleSheet.create(
         height:100,
         width:100,
     },
-    container3:{}
+    container3:{},
+    container: {flex:1},
+    camera : {  }
     }
 );
 export default App;
