@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 import { RadioButton, TextInput } from 'react-native-paper';
 import { Camera } from 'expo-camera';
 import * as ImagePicker from 'expo-image-picker';
-import camera from "./camera.js"
+import ImagePickerExample from "./camera.js"
 
 
 import {
@@ -133,7 +133,7 @@ const HomeScreen = ({navigation}) => {
                     <Text>Practice music scores</Text>
                 </View>
                 <View style={{width:'50%',height: 250, backgroundColor:'dodgerblue', justifyContent:'center', alignItems:'center'}}>
-                    <Button title='Upload image score' onPress={()=> camera()}/>
+                    <Button title='Upload image score' onClick={()=> ImagePickerExample}/>
                 </View>
             </View>
         </SafeAreaView>
@@ -141,6 +141,7 @@ const HomeScreen = ({navigation}) => {
 };
 
 /*
+<Button title='Upload image score' onPress={()=> ImagePickerExample()}/>
 const function UploadImage() {
     const [image, setImage] = useState(null);
   
