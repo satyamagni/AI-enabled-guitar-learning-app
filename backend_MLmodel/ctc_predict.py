@@ -75,18 +75,18 @@ for w in str_predictions[0]:
 
 if __name__ == '__main__':
     # gets the audio file
-    audio = get_sinewave_audio(SEMANTIC)
+    #audio = get_sinewave_audio(SEMANTIC)
     # horizontally stacks the freqs    
-    audio =  np.hstack(audio)
+    #audio =  np.hstack(audio)
     # normalizes the freqs
-    audio *= 32767 / np.max(np.abs(audio))
+    #audio *= 32767 / np.max(np.abs(audio))
     #converts it to 16 bits
-    audio = audio.astype(np.int16)
+    #audio = audio.astype(np.int16)
     #plays midi 
-    play_obj = sa.play_buffer(audio, 1, 2, 44100)
+    #play_obj = sa.play_buffer(audio, 1, 2, 44100)
     #outputs to the console
-    if play_obj.is_playing():
-        print("\nplaying...")
-        print(f'\n{SEMANTIC}')  
+    #if play_obj.is_playing():
+    #    print("\nplaying...")
+    print(f'\n{SEMANTIC}')  
     #stop playback when done
-    play_obj.wait_done()
+    #play_obj.wait_done()

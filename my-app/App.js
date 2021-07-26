@@ -132,9 +132,9 @@ const HomeScreen = ({navigation}) => {
                 <View style={{width:'50%',height: 250, backgroundColor:'green', justifyContent:'center', alignItems:'center'}}>
                     <Text>Practice music scores</Text>
                 </View>
-                <View style={{width:'50%',height: 250, backgroundColor:'dodgerblue', justifyContent:'center', alignItems:'center'}}>
+            <View style={{width:'50%',height: 250, backgroundColor:'dodgerblue', justifyContent:'center', alignItems:'center'}}>
                     <Button title='Upload image score' onClick={()=> ImagePickerExample}/>
-                </View>
+            </View>
             </View>
         </SafeAreaView>
     );
