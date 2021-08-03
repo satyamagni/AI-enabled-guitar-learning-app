@@ -48,10 +48,10 @@ WIDTH_REDUCTION, HEIGHT = sess.run([width_reduction_tensor, height_tensor])
 
 decoded, _ = tf_v1.nn.ctc_greedy_decoder(logits, seq_len)
 
-image = cv2.imread(args.image,False)
+image = cv2.imread(args.image,0)
 image = ctc_utils.resize(image, HEIGHT)
 image = ctc_utils.normalize(image)
-image = np.asarray(image).reshape(1,image.shape[0],image.shape[1],1)
+image = np.asarray(image).reshape(1,image.shape[0],-1,1)
 
 seq_lengths = [ image.shape[2] / WIDTH_REDUCTION ]
 
